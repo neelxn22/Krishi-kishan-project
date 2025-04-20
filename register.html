@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Krishi Kishan</title>
+    <link rel="stylesheet" href="web.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .register-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .btn:hover {
+        background: #45a049;
+      }
+
+      .login-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .login-link a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .register-container {
+          margin: 20px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="register-container">
+      <h2>Create an Account</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            placeholder="Enter your location"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <div class="login-link">
+          Already have an account? <a href="login.html" id="loginLink">Login</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+      <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+    </div>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const fullName = document.getElementById("fullName").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          const location = document.getElementById("location").value;
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+          }
+
+          try {
+            const response = await fetch("http://localhost:3000/api/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                fullName,
+                email,
+                phone,
+                password,
+                location,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("Registration successful! Please login.");
+              window.location.href = "login.html";
+            } else {
+              alert(data.error || "Registration failed");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred during registration");
+          }
+        });
+
+      document.getElementById("loginLink").addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>

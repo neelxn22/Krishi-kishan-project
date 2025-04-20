@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soil Testing - Krishi Kishan</title>
+    <link rel="stylesheet" href="web.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html">Home</a></li>
+            <li><a href="market-linkage.html">Market Linkage</a></li>
+            <li><a href="soil-testing.html" class="active">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html">Rent Equipment</a></li>
+            <li><a href="login.html" target="_blank">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="soil-testing">
+      <div class="container">
+        <h1>Soil Testing & Analysis</h1>
+        <div class="soil-container">
+          <div class="soil-info">
+            <h2>Understand Your Soil Better</h2>
+            <p>
+              Get detailed analysis of your soil's composition and receive
+              personalized recommendations for better crop yield.
+            </p>
+
+            <div class="soil-features">
+              <div class="feature">
+                <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                <h3>Nutrient Analysis</h3>
+                <p>Detailed breakdown of essential nutrients</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>pH Level Testing</h3>
+                <p>Accurate pH measurement and recommendations</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Crop Recommendations</h3>
+                <p>Best crops for your soil type</p>
+              </div>
+            </div>
+
+            <div class="soil-benefits">
+              <h3>Key Benefits</h3>
+              <div class="benefits-list">
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Increased crop yield</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Optimized fertilizer usage</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Better crop planning</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Improved soil health</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="soil-form">
+            <div class="form-header">
+              <h3>Submit Soil Sample Data</h3>
+              <p>Choose your preferred method of analysis</p>
+            </div>
+            <div class="analysis-methods">
+              <button class="method-btn active" data-method="manual">
+                Manual Data Entry
+              </button>
+              <button class="method-btn" data-method="image">
+                Image Analysis
+              </button>
+            </div>
+            <form id="soil-form">
+              <div class="form-group manual-input">
+                <label for="soil-type">Soil Type</label>
+                <select id="soil-type" required>
+                  <option value="">Select Soil Type</option>
+                  <option value="clay">Clay</option>
+                  <option value="sandy">Sandy</option>
+                  <option value="loamy">Loamy</option>
+                  <option value="silt">Silt</option>
+                </select>
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="ph-level">pH Level</label>
+                <input
+                  type="number"
+                  id="ph-level"
+                  step="0.1"
+                  min="0"
+                  max="14"
+                  required
+                />
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="moisture">Moisture Content (%)</label>
+                <input type="number" id="moisture" min="0" max="100" required />
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="organic-matter">Organic Matter (%)</label>
+                <input
+                  type="number"
+                  id="organic-matter"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+
+              <div class="form-group image-input" style="display: none">
+                <label>Soil Image</label>
+                <div class="image-upload-container">
+                  <div class="camera-preview" id="camera-preview">
+                    <video id="camera-feed" autoplay playsinline></video>
+                    <canvas id="camera-canvas" style="display: none"></canvas>
+                    <div class="camera-controls">
+                      <button
+                        type="button"
+                        id="start-camera"
+                        class="btn-secondary"
+                      >
+                        <i class="fas fa-camera"></i> Open Camera
+                      </button>
+                      <button
+                        type="button"
+                        id="capture-photo"
+                        class="btn-secondary"
+                        style="display: none"
+                      >
+                        <i class="fas fa-camera"></i> Capture
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="image-preview"
+                    id="image-preview"
+                    style="display: none"
+                  >
+                    <img id="preview-image" src="" alt="Soil Sample Preview" />
+                    <button
+                      type="button"
+                      id="retake-photo"
+                      class="btn-secondary"
+                    >
+                      <i class="fas fa-redo"></i> Retake
+                    </button>
+                  </div>
+                  <input
+                    type="file"
+                    id="image-upload"
+                    accept="image/*"
+                    style="display: none"
+                  />
+                  <button type="button" id="upload-image" class="btn-secondary">
+                    <i class="fas fa-upload"></i> Upload Image
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="Enter your location"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="crop-type">Current/Planned Crop</label>
+                <select id="crop-type" required>
+                  <option value="">Select Crop</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="rice">Rice</option>
+                  <option value="cotton">Cotton</option>
+                  <option value="sugarcane">Sugarcane</option>
+                  <option value="vegetables">Vegetables</option>
+                  <option value="fruits">Fruits</option>
+                  <option value="pulses">Pulses</option>
+                  <option value="spices">Spices</option>
+                </select>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">
+                  <i class="fas fa-flask"></i> Analyze Soil
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="analysis-results" style="display: none">
+            <h3>Soil Analysis Results</h3>
+            <div class="results-container">
+              <div class="input-summary">
+                <h4>Input Summary</h4>
+                <p>
+                  <strong>Soil Type:</strong> <span id="result-type">-</span>
+                </p>
+                <p><strong>pH Level:</strong> <span id="result-ph">-</span></p>
+                <p>
+                  <strong>Moisture Content:</strong>
+                  <span id="result-moisture">-</span>
+                </p>
+                <p>
+                  <strong>Organic Matter:</strong>
+                  <span id="result-organic">-</span>
+                </p>
+              </div>
+              <div class="result-card">
+                <h4>Soil Analysis Results</h4>
+                <div class="result-content">
+                  <p><strong>Type:</strong> <span id="result-type">-</span></p>
+                  <p>
+                    <strong>pH Level:</strong> <span id="result-ph">-</span>
+                  </p>
+                  <p>
+                    <strong>Moisture:</strong>
+                    <span id="result-moisture">-</span>
+                  </p>
+                  <p>
+                    <strong>Organic Matter:</strong>
+                    <span id="result-organic">-</span>
+                  </p>
+                </div>
+              </div>
+              <div class="result-card">
+                <h4>Crop Recommendations</h4>
+                <div class="result-content">
+                  <p><strong>Best Suited Crops:</strong></p>
+                  <ul id="recommended-crops"></ul>
+                </div>
+              </div>
+              <div class="result-card">
+                <h4>Improvement Suggestions</h4>
+                <div class="result-content">
+                  <ul id="improvement-suggestions"></ul>
+                </div>
+              </div>
+            </div>
+            <button class="btn" id="new-analysis">Start New Analysis</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="login.html" target="_blank">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Login to Krishi Kishan</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember" />
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="register-link">
+            Don't have an account? <a href="#" id="registerLink">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="reg-confirm-password"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-location">Location</label>
+            <input
+              type="text"
+              id="reg-location"
+              placeholder="Enter your location"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+          <div class="login-link">
+            Already have an account? <a href="#" id="loginLink">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      .analysis-methods {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .method-btn {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #4caf50;
+        background: white;
+        color: #4caf50;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .method-btn.active {
+        background: #4caf50;
+        color: white;
+      }
+
+      .method-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .soil-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .soil-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .analysis-results {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 90%;
+        margin: 2rem auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      .results-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .input-summary {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        text-align: left;
+      }
+
+      .input-summary h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #4caf50;
+      }
+
+      .input-summary p {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .input-summary strong {
+        color: #4caf50;
+      }
+
+      .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .condition-display {
+        background: #4caf50;
+        color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+
+      .condition-display h4 {
+        margin: 0;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .condition-display .recommendations {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 6px;
+      }
+
+      .condition-display .recommendations h5 {
+        margin: 0 0 1rem 0;
+        font-size: 1.2rem;
+      }
+
+      .condition-display .recommendations ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      .condition-display .recommendations li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .condition-display .recommendations li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+      }
+
+      .result-content {
+        text-align: left;
+        padding: 1rem;
+      }
+
+      .result-content p {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .result-content ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+
+      .result-content li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .result-content li::before {
+        content: "•";
+        color: #4caf50;
+        position: absolute;
+        left: 0;
+      }
+
+      #new-analysis {
+        margin-top: 2rem;
+        width: 200px;
+        padding: 1rem;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
+        .analysis-results {
+          width: 95%;
+          padding: 1rem;
+        }
+
+        .result-card {
+          padding: 1rem;
+        }
+
+        .condition-display {
+          padding: 1rem;
+        }
+
+        .condition-display h4 {
+          font-size: 1.2rem;
+        }
+      }
+
+      .image-upload-container {
+        border: 2px dashed #4caf50;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .camera-preview,
+      .image-preview {
+        max-width: 100%;
+        margin-bottom: 15px;
+      }
+
+      #camera-feed,
+      #preview-image {
+        max-width: 100%;
+        border-radius: 4px;
+      }
+
+      .camera-controls {
+        margin-top: 15px;
+      }
+
+      .btn-secondary {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        font-size: 14px;
+      }
+
+      .btn-secondary:hover {
+        background-color: #45a049;
+      }
+
+      #capture-photo {
+        background-color: #2196f3;
+      }
+
+      #retake-photo {
+        background-color: #f44336;
+      }
+    </style>
+
+    <script>
+      document
+        .getElementById("soil-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert(
+            "Your soil analysis is being processed. Results will be available shortly."
+          );
+          this.reset();
+        });
+
+      // Method selection
+      const methodButtons = document.querySelectorAll(".method-btn");
+      const manualInputs = document.querySelectorAll(".manual-input");
+      const imageInput = document.querySelector(".image-input");
+
+      methodButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          methodButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          if (button.dataset.method === "manual") {
+            // Show manual inputs, hide image input
+            manualInputs.forEach((input) => (input.style.display = "block"));
+            imageInput.style.display = "none";
+          } else {
+            // Show image input, hide manual inputs
+            manualInputs.forEach((input) => (input.style.display = "none"));
+            imageInput.style.display = "block";
+            // Reset camera and image preview states
+            cameraPreview.style.display = "block";
+            imagePreview.style.display = "none";
+            startCameraBtn.style.display = "block";
+            capturePhotoBtn.style.display = "none";
+            // Stop any existing camera stream
+            if (stream) {
+              stream.getTracks().forEach((track) => track.stop());
+              stream = null;
+            }
+          }
+        });
+      });
+
+      // Camera functionality
+      const startCameraBtn = document.getElementById("start-camera");
+      const capturePhotoBtn = document.getElementById("capture-photo");
+      const retakePhotoBtn = document.getElementById("retake-photo");
+      const uploadImageBtn = document.getElementById("upload-image");
+      const cameraPreview = document.getElementById("camera-preview");
+      const imagePreview = document.getElementById("image-preview");
+      const cameraFeed = document.getElementById("camera-feed");
+      const cameraCanvas = document.getElementById("camera-canvas");
+      const previewImage = document.getElementById("preview-image");
+      const imageUpload = document.getElementById("image-upload");
+      let stream = null;
+
+      // Start camera button click handler
+      startCameraBtn.addEventListener("click", async () => {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              facingMode: "environment", // Use back camera if available
+            },
+          });
+          cameraFeed.srcObject = stream;
+          startCameraBtn.style.display = "none";
+          capturePhotoBtn.style.display = "block";
+          uploadImageBtn.style.display = "none"; // Hide upload button while camera is active
+        } catch (err) {
+          console.error("Error accessing camera:", err);
+          alert(
+            "Could not access camera. Please check permissions or try uploading an image instead."
+          );
+        }
+      });
+
+      // Capture photo button click handler
+      capturePhotoBtn.addEventListener("click", () => {
+        const context = cameraCanvas.getContext("2d");
+        cameraCanvas.width = cameraFeed.videoWidth;
+        cameraCanvas.height = cameraFeed.videoHeight;
+        context.drawImage(cameraFeed, 0, 0);
+        previewImage.src = cameraCanvas.toDataURL("image/png");
+        cameraPreview.style.display = "none";
+        imagePreview.style.display = "block";
+        uploadImageBtn.style.display = "block"; // Show upload button again
+
+        // Stop the camera stream
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop());
+          stream = null;
+        }
+      });
+
+      // Retake photo button click handler
+      retakePhotoBtn.addEventListener("click", () => {
+        imagePreview.style.display = "none";
+        cameraPreview.style.display = "block";
+        startCameraBtn.style.display = "block";
+        capturePhotoBtn.style.display = "none";
+        uploadImageBtn.style.display = "block";
+        previewImage.src = "";
+      });
+
+      // Upload image button click handler
+      uploadImageBtn.addEventListener("click", () => {
+        imageUpload.click();
+      });
+
+      // Image upload change handler
+      imageUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            cameraPreview.style.display = "none";
+            imagePreview.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Login Modal functionality
+      const loginModal = document.getElementById("loginModal");
+      const registerModal = document.getElementById("registerModal");
+      const loginBtn = document.getElementById("loginBtn");
+      const registerLink = document.getElementById("registerLink");
+      const loginLink = document.getElementById("loginLink");
+      const closeButtons = document.querySelectorAll(".close-modal");
+
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "block";
+      });
+
+      registerLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        registerModal.style.display = "block";
+      });
+
+      loginLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerModal.style.display = "none";
+        loginModal.style.display = "block";
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          loginModal.style.display = "none";
+          registerModal.style.display = "none";
+        });
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.style.display = "none";
+        }
+        if (e.target === registerModal) {
+          registerModal.style.display = "none";
+        }
+      });
+
+      // Form submissions
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your login logic here
+        alert("Login successful!");
+        loginModal.style.display = "none";
+      });
+
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          // Add your registration logic here
+          alert("Registration successful! Please login.");
+          registerModal.style.display = "none";
+          loginModal.style.display = "block";
+        });
+
+      // Soil analysis form submission
+      function analyzeSoil(soilData) {
+        const { soilType, phLevel, moisture, organicMatter } = soilData;
+        let condition = "";
+        let recommendations = [];
+        let improvements = [];
+        let suitableCrops = [];
+        let soilDescription = "";
+
+        // Determine soil condition based on pH and organic matter
+        if (
+          phLevel >= 6.0 &&
+          phLevel <= 7.0 &&
+          organicMatter >= 4 &&
+          organicMatter <= 6
+        ) {
+          condition = "Optimal";
+          soilDescription =
+            "Your soil is in optimal condition with ideal pH and organic matter levels. This type of soil is typically found in fertile plains and valleys, where moisture is well-balanced.";
+          suitableCrops = ["Wheat", "Rice", "Various Vegetables", "Fruits"];
+          recommendations = [
+            "Maintain current organic matter levels through regular composting",
+            "Continue balanced irrigation practices",
+            "Monitor soil health regularly",
+            "Practice crop rotation to maintain soil fertility",
+          ];
+        } else if (
+          phLevel >= 6.0 &&
+          phLevel <= 6.5 &&
+          organicMatter >= 3 &&
+          organicMatter <= 5
+        ) {
+          condition = "Excellent";
+          soilDescription =
+            "Your soil has excellent conditions with slightly acidic pH and good organic matter content. These conditions are common near riverbanks or wetland regions.";
+          suitableCrops = ["Rice", "Leafy Greens", "Root Vegetables"];
+          recommendations = [
+            "Maintain moisture levels through proper irrigation",
+            "Add organic compost periodically",
+            "Monitor water retention",
+            "Consider mulching to retain moisture",
+          ];
+        } else if (
+          phLevel >= 6.5 &&
+          phLevel <= 7.5 &&
+          organicMatter >= 2 &&
+          organicMatter <= 4
+        ) {
+          condition = "Good";
+          soilDescription =
+            "Your soil has good conditions, typical of upland farms and temperate areas. While not as nutrient-rich as optimal soil, it's still very suitable for farming.";
+          suitableCrops = ["Wheat", "Maize", "Beans"];
+          recommendations = [
+            "Add organic matter through composting",
+            "Implement crop rotation",
+            "Consider cover crops",
+            "Monitor nutrient levels regularly",
+          ];
+        } else if (
+          phLevel >= 5.5 &&
+          phLevel <= 6.5 &&
+          organicMatter >= 1.5 &&
+          organicMatter <= 3
+        ) {
+          condition = "Moderate";
+          soilDescription =
+            "Your soil has moderate conditions, common in hilly terrains or semi-arid zones. The fertility is limited but can be improved.";
+          suitableCrops = ["Potatoes", "Citrus Fruits", "Pulses"];
+          recommendations = [
+            "Implement regular irrigation system",
+            "Add significant amounts of organic matter",
+            "Consider pH adjustment",
+            "Use appropriate fertilizers",
+          ];
+        } else if (phLevel >= 7.5 && phLevel <= 8.5 && organicMatter < 2) {
+          condition = "Poor";
+          soilDescription =
+            "Your soil has poor conditions, typical of drylands or arid regions. Significant improvements are needed for productive farming.";
+          suitableCrops = [
+            "Salt-tolerant crops",
+            "Drought-resistant varieties",
+          ];
+          recommendations = [
+            "Add large amounts of organic matter",
+            "Implement proper drainage system",
+            "Consider soil amendments to adjust pH",
+            "Use drought-resistant crops initially",
+          ];
+        } else {
+          condition = "Unsuitable";
+          soilDescription =
+            "Your soil has unsuitable conditions, typical of saline, degraded, or heavily eroded lands. Extensive restoration is needed.";
+          suitableCrops = ["Hardy grasses", "Specialized restoration crops"];
+          recommendations = [
+            "Consult agricultural experts for restoration",
+            "Consider soil replacement or extensive amendment",
+            "Implement erosion control measures",
+            "Start with soil-building plants",
+          ];
+        }
+
+        return {
+          condition,
+          soilDescription,
+          recommendations,
+          improvements,
+          suitableCrops,
+          soilType,
+          phLevel,
+          moisture,
+          organicMatter,
+          details: {
+            phRange: getPHRange(phLevel),
+            moistureLevel: getMoistureLevel(moisture),
+            organicMatterLevel: getOrganicMatterLevel(organicMatter),
+          },
+        };
+      }
+
+      function getPHRange(ph) {
+        if (ph >= 6.0 && ph <= 7.0) return "Neutral (Optimal)";
+        if (ph >= 6.0 && ph <= 6.5) return "Slightly Acidic (Excellent)";
+        if (ph >= 6.5 && ph <= 7.5) return "Near Neutral (Good)";
+        if (ph >= 5.5 && ph <= 6.5) return "Mildly Acidic (Moderate)";
+        if (ph >= 7.5 && ph <= 8.5) return "Alkaline (Poor)";
+        return "Extreme (Unsuitable)";
+      }
+
+      function getMoistureLevel(moisture) {
+        if (moisture >= 40 && moisture <= 60) return "Well-balanced";
+        if (moisture > 60) return "High (Potential waterlogging)";
+        if (moisture >= 30 && moisture < 40) return "Moderate";
+        return "Low (Requires irrigation)";
+      }
+
+      function getOrganicMatterLevel(om) {
+        if (om >= 4 && om <= 6) return "High (Optimal)";
+        if (om >= 3 && om <= 5) return "Good (Excellent)";
+        if (om >= 2 && om <= 4) return "Moderate (Good)";
+        if (om >= 1.5 && om <= 3) return "Low (Moderate)";
+        if (om < 2) return "Very Low (Poor)";
+        return "Insufficient (Unsuitable)";
+      }
+
+      function updateResultsDisplay(results) {
+        // Clear previous results
+        document.querySelector(".results-container").innerHTML = "";
+
+        // Create main result card
+        const mainCard = document.createElement("div");
+        mainCard.className = "condition-display";
+        mainCard.innerHTML = `
+          <h4>Soil Condition: <span class="condition-${results.condition.toLowerCase()}">${
+          results.condition
+        }</span></h4>
+          <p class="soil-description">${results.soilDescription}</p>
+          <div class="soil-parameters">
+            <div class="parameter">
+              <h5>pH Level</h5>
+              <p>${results.phLevel.toFixed(1)} (${results.details.phRange})</p>
+            </div>
+            <div class="parameter">
+              <h5>Moisture Content</h5>
+              <p>${results.moisture}% (${results.details.moistureLevel})</p>
+            </div>
+            <div class="parameter">
+              <h5>Organic Matter</h5>
+              <p>${results.organicMatter}% (${
+          results.details.organicMatterLevel
+        })</p>
+            </div>
+          </div>
+        `;
+        document.querySelector(".results-container").appendChild(mainCard);
+
+        // Add recommendations card
+        const recommendationsCard = document.createElement("div");
+        recommendationsCard.className = "result-card";
+        recommendationsCard.innerHTML = `
+          <h4>Recommendations</h4>
+          <div class="result-content">
+            <ul>
+              ${results.recommendations
+                .map((rec) => `<li>${rec}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        `;
+        document
+          .querySelector(".results-container")
+          .appendChild(recommendationsCard);
+
+        // Add suitable crops card
+        const cropsCard = document.createElement("div");
+        cropsCard.className = "result-card";
+        cropsCard.innerHTML = `
+          <h4>Suitable Crops</h4>
+          <div class="result-content">
+            <ul>
+              ${results.suitableCrops
+                .map((crop) => `<li>${crop}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        `;
+        document.querySelector(".results-container").appendChild(cropsCard);
+
+        // Add styles for the new results display
+        const styleElement = document.createElement("style");
+        styleElement.textContent = `
+          .soil-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            color: #333;
+          }
+
+          .soil-parameters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+          }
+
+          .parameter {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+          }
+
+          .parameter h5 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+            font-size: 1.1rem;
+          }
+
+          .parameter p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+
+          .condition-optimal { color: #4CAF50; }
+          .condition-excellent { color: #8BC34A; }
+          .condition-good { color: #CDDC39; }
+          .condition-moderate { color: #FFC107; }
+          .condition-poor { color: #FF9800; }
+          .condition-unsuitable { color: #F44336; }
+        `;
+        document.head.appendChild(styleElement);
+
+        // Show results section and scroll to it
+        document.querySelector(".analysis-results").style.display = "block";
+        document
+          .querySelector(".analysis-results")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

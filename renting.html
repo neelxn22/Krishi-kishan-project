@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rent Equipment - Krishi Kishan</title>
+    <link rel="stylesheet" href="web.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html">Home</a></li>
+            <li><a href="market-linkage.html">Market Linkage</a></li>
+            <li><a href="soil-testing.html">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html" class="active">Rent Equipment</a></li>
+            <li><a href="login.html" target="_blank">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="renting-section">
+      <div class="container">
+        <div class="renting-header">
+          <h1>Rent Farming Equipment</h1>
+          <p>Find and rent the equipment you need for your farm</p>
+        </div>
+
+        <div class="renting-content">
+          <div class="renting-info">
+            <h2>Why Rent with Us?</h2>
+            <p class="highlight">
+              Access high-quality farming equipment at affordable rates
+            </p>
+
+            <div class="renting-features">
+              <div class="feature">
+                <i class="fas fa-tractor feature-icon"></i>
+                <h3>Wide Range</h3>
+                <p>From tractors to irrigation systems</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-map-marker-alt feature-icon"></i>
+                <h3>Local Delivery</h3>
+                <p>Quick delivery to your farm</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-shield-alt feature-icon"></i>
+                <h3>Quality Assurance</h3>
+                <p>Well-maintained equipment</p>
+              </div>
+            </div>
+
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Flexible rental periods</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Competitive pricing</span>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <span>24/7 support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="renting-form">
+            <div class="search-container">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for equipment..." />
+              </div>
+              <div class="filter-options">
+                <select id="category">
+                  <option value="">All Categories</option>
+                  <option value="tractor">Tractors</option>
+                  <option value="harvester">Harvesters</option>
+                  <option value="irrigation">Irrigation Equipment</option>
+                  <option value="tools">Hand Tools</option>
+                </select>
+                <select id="duration">
+                  <option value="">Rental Duration</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="equipment-grid">
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>John Deere Tractor</h3>
+                  <p class="description">45 HP, 4WD, with loader attachment</p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 2000/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 5km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="tractor1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>Combine Harvester</h3>
+                  <p class="description">Self-propelled, 6-row capacity</p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 5000/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 10km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="harvester1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>Drip Irrigation System</h3>
+                  <p class="description">Complete setup for 1 acre</p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 1000/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 3km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="irrigation1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>Rotavator</h3>
+                  <p class="description">Heavy-duty, 6 feet working width</p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 1500/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 4km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="rotavator1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>Power Sprayer</h3>
+                  <p class="description">20L capacity, battery operated</p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 500/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 2km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="sprayer1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+
+              <div class="equipment-card">
+                <div class="equipment-info">
+                  <h3>Seed Drill</h3>
+                  <p class="description">
+                    9-row seed drill with fertilizer box
+                  </p>
+                  <div class="equipment-details">
+                    <span><i class="fas fa-rupee-sign"></i> 1200/day</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 6km away</span>
+                  </div>
+                  <button
+                    class="btn btn-primary rent-btn"
+                    data-equipment="seeder1"
+                  >
+                    Rent Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rental Modal -->
+    <div class="modal" id="rentalModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Rent Equipment</h2>
+        <form id="rentalForm">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" required />
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" required />
+          </div>
+          <div class="form-group">
+            <label for="delivery">Delivery Option</label>
+            <select id="delivery" required>
+              <option value="">Select delivery option</option>
+              <option value="pickup">Self Pickup</option>
+              <option value="delivery">Home Delivery (+₹500)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="payment">Payment Method</label>
+            <select id="payment" required>
+              <option value="">Select payment method</option>
+              <option value="online">Online Payment</option>
+              <option value="cash">Cash on Delivery</option>
+            </select>
+          </div>
+          <div class="rental-summary">
+            <h3>Rental Summary</h3>
+            <div class="summary-item">
+              <span>Daily Rate:</span>
+              <span class="daily-rate">₹2000</span>
+            </div>
+            <div class="summary-item">
+              <span>Duration:</span>
+              <span class="duration">3 days</span>
+            </div>
+            <div class="summary-item">
+              <span>Delivery:</span>
+              <span class="delivery-charge">₹0</span>
+            </div>
+            <div class="summary-item total">
+              <span>Total:</span>
+              <span class="total-amount">₹6000</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Confirm Rental</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="login.html" target="_blank">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Login to Krishi Kishan</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember" />
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="register-link">
+            Don't have an account? <a href="#" id="registerLink">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="reg-confirm-password"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-location">Location</label>
+            <input
+              type="text"
+              id="reg-location"
+              placeholder="Enter your location"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+          <div class="login-link">
+            Already have an account? <a href="#" id="loginLink">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Modal functionality
+      const modal = document.getElementById("rentalModal");
+      const closeModal = document.querySelector(".close-modal");
+      const rentButtons = document.querySelectorAll(".rent-btn");
+
+      rentButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          modal.style.display = "block";
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Date validation
+      const startDate = document.getElementById("startDate");
+      const endDate = document.getElementById("endDate");
+      const today = new Date().toISOString().split("T")[0];
+
+      startDate.min = today;
+      startDate.addEventListener("change", () => {
+        endDate.min = startDate.value;
+        if (endDate.value && endDate.value < startDate.value) {
+          endDate.value = startDate.value;
+        }
+        updateRentalSummary();
+      });
+
+      endDate.addEventListener("change", () => {
+        updateRentalSummary();
+      });
+
+      // Update rental summary
+      function updateRentalSummary() {
+        if (startDate.value && endDate.value) {
+          const start = new Date(startDate.value);
+          const end = new Date(endDate.value);
+          const duration = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+          const dailyRate = 2000; // This should come from the selected equipment
+          const deliveryCharge =
+            document.getElementById("delivery").value === "delivery" ? 500 : 0;
+          const total = dailyRate * duration + deliveryCharge;
+
+          document.querySelector(".duration").textContent = `${duration} days`;
+          document.querySelector(
+            ".delivery-charge"
+          ).textContent = `₹${deliveryCharge}`;
+          document.querySelector(".total-amount").textContent = `₹${total}`;
+        }
+      }
+
+      // Form submission
+      const rentalForm = document.getElementById("rentalForm");
+      rentalForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your rental submission logic here
+        alert("Rental request submitted successfully!");
+        modal.style.display = "none";
+      });
+
+      // Login Modal functionality
+      const loginModal = document.getElementById("loginModal");
+      const registerModal = document.getElementById("registerModal");
+      const loginBtn = document.getElementById("loginBtn");
+      const registerLink = document.getElementById("registerLink");
+      const loginLink = document.getElementById("loginLink");
+      const closeButtons = document.querySelectorAll(".close-modal");
+
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "block";
+      });
+
+      registerLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        registerModal.style.display = "block";
+      });
+
+      loginLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerModal.style.display = "none";
+        loginModal.style.display = "block";
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          loginModal.style.display = "none";
+          registerModal.style.display = "none";
+        });
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.style.display = "none";
+        }
+        if (e.target === registerModal) {
+          registerModal.style.display = "none";
+        }
+      });
+
+      // Form submissions
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your login logic here
+        alert("Login successful!");
+        loginModal.style.display = "none";
+      });
+
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          // Add your registration logic here
+          alert("Registration successful! Please login.");
+          registerModal.style.display = "none";
+          loginModal.style.display = "block";
+        });
+    </script>
+  </body>
+</html>

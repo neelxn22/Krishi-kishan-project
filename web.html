@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krishi Kishan - Smart Farming Platform</title>
+    <link rel="stylesheet" href="web.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Login Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        position: relative;
+        background: rgba(255, 255, 255, 0.95);
+        margin: 5% auto;
+        padding: 3rem;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2rem;
+        color: #7f8c8d;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: #2c3e50;
+      }
+
+      .modal h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #2c3e50, #3498db);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+
+      .input-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .input-group i {
+        position: absolute;
+        left: 1rem;
+        color: #7f8c8d;
+        transition: color 0.3s ease;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 1rem 1rem 1rem 3rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .input-group input:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        outline: none;
+        background: white;
+      }
+
+      .input-group input:focus + i {
+        color: #3498db;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #7f8c8d;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .toggle-password:hover {
+        color: #3498db;
+      }
+
+      .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem 0;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+
+      .remember-me input[type="checkbox"] {
+        width: 1.2rem;
+        height: 1.2rem;
+        accent-color: #3498db;
+      }
+
+      .forgot-password {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .forgot-password:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #3498db, #2980b9);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        width: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+
+      .register-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #7f8c8d;
+      }
+
+      .register-link a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .register-link a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: #3498db;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+
+      .register-link a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .social-login {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .social-login p {
+        color: #7f8c8d;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .social-login p::before,
+      .social-login p::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 30%;
+        height: 1px;
+        background: #e0e0e0;
+      }
+
+      .social-login p::before {
+        left: 0;
+      }
+
+      .social-login p::after {
+        right: 0;
+      }
+
+      .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .social-btn {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        border: 2px solid #e0e0e0;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #7f8c8d;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-btn.google:hover {
+        background: #db4437;
+        color: white;
+        border-color: #db4437;
+      }
+
+      .social-btn.facebook:hover {
+        background: #4267b2;
+        color: white;
+        border-color: #4267b2;
+      }
+
+      .social-btn.twitter:hover {
+        background: #1da1f2;
+        color: white;
+        border-color: #1da1f2;
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          padding: 2rem;
+          margin: 10% auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html" class="active">Home</a></li>
+            <li><a href="market-linkage.html">Market Linkage</a></li>
+            <li><a href="soil-testing.html">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html">Rent Equipment</a></li>
+            <li><a href="login.html" target="_blank">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Welcome to Krishi Kishan</h1>
+          <p class="subtitle">Your Smart Farming Companion</p>
+          <div class="hero-features">
+            <div class="feature">
+              <i class="fas fa-chart-line"></i>
+              <span>Market Access</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-flask"></i>
+              <span>Soil Analysis</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-robot"></i>
+              <span>AI Assistance</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-users"></i>
+              <span>Farmer Community</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tractor"></i>
+              <span>Equipment Rental</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <h3>Market Linkage</h3>
+            <p>
+              Connect directly with buyers and get better prices for your
+              produce.
+            </p>
+            <a href="market-linkage.html" class="btn">Learn More</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Soil Testing</h3>
+            <p>Get detailed soil analysis and personalized recommendations.</p>
+            <a href="soil-testing.html" class="btn">Learn More</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>AI Chatbot</h3>
+            <p>Get instant answers to your farming questions.</p>
+            <a href="chatbot.html" class="btn">Learn More</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Farmer Community</h3>
+            <p>
+              Connect with fellow farmers, share experiences, and get expert
+              advice.
+            </p>
+            <a href="community.html" class="btn">Learn More</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tractor"></i>
+            </div>
+            <h3>Equipment Rental</h3>
+            <p>Rent high-quality farming equipment at affordable rates.</p>
+            <a href="renting.html" class="btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="container">
+        <h2>Why Choose Us?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h4>Better Prices</h4>
+            <p>Eliminate middlemen and get fair market prices</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-chart-pie"></i>
+            <h4>Smart Analysis</h4>
+            <p>Data-driven insights for better farming decisions</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-clock"></i>
+            <h4>24/7 Support</h4>
+            <p>Round-the-clock assistance through our AI chatbot</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Secure Platform</h4>
+            <p>Safe and reliable transactions with verified buyers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Farmers Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>
+                "Krishi Kishan helped me get 30% better prices for my crops. The
+                market linkage service is amazing!"
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <h4>Rajesh Kumar</h4>
+              <p>Wheat Farmer, Punjab</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>
+                "The soil testing feature helped me understand my land better
+                and increased my yield by 25%."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <h4>Priya Sharma</h4>
+              <p>Vegetable Farmer, Maharashtra</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="login.html" target="_blank">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Welcome Back</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+              <button type="button" class="toggle-password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn-primary">
+            <span>Login</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="social-login">
+          <p>Or login with</p>
+          <div class="social-buttons">
+            <button class="social-btn google">
+              <i class="fab fa-google"></i>
+            </button>
+            <button class="social-btn facebook">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+            <button class="social-btn twitter">
+              <i class="fab fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="register-link">
+          Don't have an account?
+          <a href="register.html" target="_blank">Register here</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="regEmail"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <div class="input-group">
+              <i class="fas fa-phone"></i>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="input-group">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="regPassword"
+                placeholder="Create a password"
+                required
+              />
+              <button type="button" class="toggle-password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <div class="input-group">
+              <i class="fas fa-map-marker-alt"></i>
+              <input
+                type="text"
+                id="location"
+                placeholder="Enter your location"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">
+            <span>Register</span>
+            <i class="fas fa-user-plus"></i>
+          </button>
+        </form>
+        <div class="register-link">
+          Already have an account? <a href="#" id="loginLink">Login here</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Modal functionality
+      const loginBtn = document.getElementById("loginBtn");
+      const loginModal = document.getElementById("loginModal");
+      const registerModal = document.getElementById("registerModal");
+      const closeButtons = document.querySelectorAll(".close-modal");
+      const registerLink = document.getElementById("registerLink");
+      const loginLink = document.getElementById("loginLink");
+
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "block";
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          loginModal.style.display = "none";
+          registerModal.style.display = "none";
+        });
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.style.display = "none";
+        }
+        if (e.target === registerModal) {
+          registerModal.style.display = "none";
+        }
+      });
+
+      registerLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        registerModal.style.display = "block";
+      });
+
+      loginLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerModal.style.display = "none";
+        loginModal.style.display = "block";
+      });
+
+      // Toggle password visibility
+      const togglePassword = document.querySelectorAll(".toggle-password");
+      togglePassword.forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = button.previousElementSibling;
+          const type =
+            input.getAttribute("type") === "password" ? "text" : "password";
+          input.setAttribute("type", type);
+          button.querySelector("i").classList.toggle("fa-eye");
+          button.querySelector("i").classList.toggle("fa-eye-slash");
+        });
+      });
+
+      // Form submission
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your login logic here
+        // After successful login, redirect to home page
+        window.open("web.html", "_blank");
+      });
+
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your registration logic here
+        alert("Registration successful! Please login.");
+        registerModal.style.display = "none";
+        loginModal.style.display = "block";
+      });
+
+      // Social login buttons
+      const socialButtons = document.querySelectorAll(".social-btn");
+      socialButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Add social login logic here
+          alert("Social login coming soon!");
+        });
+      });
+    </script>
+  </body>
+</html>

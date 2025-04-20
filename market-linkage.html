@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Linkage - Krishi Kishan</title>
+    <link rel="stylesheet" href="web.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html">Home</a></li>
+            <li>
+              <a href="market-linkage.html" class="active">Market Linkage</a>
+            </li>
+            <li><a href="soil-testing.html">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html">Rent Equipment</a></li>
+            <li><a href="login.html" target="_blank">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="market-linkage">
+      <div class="container">
+        <h1>Direct Market Access Platform</h1>
+        <div class="market-content">
+          <div class="market-info">
+            <h2>Connect Directly with Buyers</h2>
+            <p class="highlight">
+              Eliminate middlemen and get better prices for your produce by
+              connecting directly with verified buyers.
+            </p>
+
+            <div class="market-features">
+              <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Better Prices</h3>
+                <p>Get fair market prices by selling directly to buyers</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h3>Verified Buyers</h3>
+                <p>Connect with trusted wholesalers and retailers</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Payments</h3>
+                <p>Multiple payment options with secure transactions</p>
+              </div>
+            </div>
+
+            <div class="buyer-types">
+              <h3>Connect With</h3>
+              <div class="buyer-grid">
+                <div class="buyer-card">
+                  <h4>Wholesalers</h4>
+                  <p>Bulk buyers offering competitive prices</p>
+                </div>
+                <div class="buyer-card">
+                  <h4>Retailers</h4>
+                  <p>Local and regional market connections</p>
+                </div>
+                <div class="buyer-card">
+                  <h4>Exporters</h4>
+                  <p>Access to international markets</p>
+                </div>
+                <div class="buyer-card">
+                  <h4>Consumers</h4>
+                  <p>Direct-to-consumer sales</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-form">
+            <h3>List Your Produce</h3>
+            <form id="produce-form">
+              <div class="form-group">
+                <label for="crop-type">Crop Type</label>
+                <select id="crop-type" required>
+                  <option value="">Select Crop</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="rice">Rice</option>
+                  <option value="cotton">Cotton</option>
+                  <option value="sugarcane">Sugarcane</option>
+                  <option value="vegetables">Vegetables</option>
+                  <option value="fruits">Fruits</option>
+                  <option value="pulses">Pulses</option>
+                  <option value="spices">Spices</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="quantity">Quantity Available</label>
+                <div class="quantity-input-container">
+                  <input
+                    type="number"
+                    id="quantity"
+                    min="0"
+                    step="0.1"
+                    placeholder="0"
+                    required
+                    class="quantity-number-input"
+                  />
+                  <select id="unit" class="quantity-unit-select">
+                    <option value="kg">Kilograms (kg)</option>
+                    <option value="quintal">Quintal (100 kg)</option>
+                    <option value="ton">Ton (1000 kg)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="quality">Quality Grade</label>
+                <select id="quality" required>
+                  <option value="">Select Grade</option>
+                  <option value="A">Grade A (Premium)</option>
+                  <option value="B">Grade B (Good)</option>
+                  <option value="C">Grade C (Standard)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="expected-price">Expected Price (₹/unit)</label>
+                <input type="number" id="expected-price" required />
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="Enter your location"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="harvest-date">Expected Harvest Date</label>
+                <input type="date" id="harvest-date" required />
+              </div>
+
+              <div class="payment-options">
+                <h4>Preferred Payment Methods</h4>
+                <div class="payment-grid">
+                  <label class="payment-option">
+                    <input type="checkbox" name="payment" value="upi" /> UPI
+                  </label>
+                  <label class="payment-option">
+                    <input type="checkbox" name="payment" value="bank" /> Bank
+                    Transfer
+                  </label>
+                  <label class="payment-option">
+                    <input type="checkbox" name="payment" value="cash" /> Cash
+                    on Delivery
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn">List Your Produce</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document
+        .getElementById("produce-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const cropType = document.getElementById("crop-type").value;
+          const quantity = document.getElementById("quantity").value;
+          const unit = document.getElementById("unit").value;
+          const quality = document.getElementById("quality").value;
+          const location = document.getElementById("location").value;
+
+          // Show success message with details
+          alert(
+            `Your ${cropType} (${quantity} ${unit}, ${quality} grade) from ${location} has been listed successfully! Buyers will contact you soon.`
+          );
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="login.html" target="_blank">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Login to Krishi Kishan</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember" />
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="register-link">
+            Don't have an account? <a href="#" id="registerLink">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="reg-confirm-password"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-location">Location</label>
+            <input
+              type="text"
+              id="reg-location"
+              placeholder="Enter your location"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+          <div class="login-link">
+            Already have an account? <a href="#" id="loginLink">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Login Modal functionality
+      const loginModal = document.getElementById("loginModal");
+      const registerModal = document.getElementById("registerModal");
+      const loginBtn = document.getElementById("loginBtn");
+      const registerLink = document.getElementById("registerLink");
+      const loginLink = document.getElementById("loginLink");
+      const closeButtons = document.querySelectorAll(".close-modal");
+
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "block";
+      });
+
+      registerLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        registerModal.style.display = "block";
+      });
+
+      loginLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerModal.style.display = "none";
+        loginModal.style.display = "block";
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          loginModal.style.display = "none";
+          registerModal.style.display = "none";
+        });
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.style.display = "none";
+        }
+        if (e.target === registerModal) {
+          registerModal.style.display = "none";
+        }
+      });
+
+      // Form submissions
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Add your login logic here
+        alert("Login successful!");
+        loginModal.style.display = "none";
+      });
+
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          // Add your registration logic here
+          alert("Registration successful! Please login.");
+          registerModal.style.display = "none";
+          loginModal.style.display = "block";
+        });
+    </script>
+
+    <style>
+      .quantity-input-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .quantity-number-input {
+        width: 60px;
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .quantity-unit-select {
+        width: 200px;
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+      }
+
+      .quantity-number-input:focus,
+      .quantity-unit-select:focus {
+        outline: none;
+        border-color: #4caf50;
+      }
+    </style>
+  </body>
+</html>
